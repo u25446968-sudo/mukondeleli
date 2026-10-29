@@ -1605,3 +1605,7 @@ footer:has(.footer-velaris) .footer-stats,footer:has(.footer-velaris) .footer-ma
   footer .footer-col[aria-label="Services"],footer .footer-col[aria-label="Company"]{grid-column:auto!important;grid-row:auto!important;transform:none!important;padding-top:0!important}
   footer .footer-col>a:not(.footer-contact-item){padding:6px 0!important;min-height:0!important;font-size:.82rem!important}
 }
+
+/* Maker's signature in the footer bar */
+.footer-signature{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;color:rgba(214,222,240,.42);letter-spacing:.04em;white-space:nowrap;display:inline-flex;align-items:baseline;gap:.3em;line-height:1}
+.footer-signature-name{font-family:'Great Vibes',cursive;font-size:1.3rem;font-weight:400;letter-spacing:0;color:rgba(233,173,32,.78);transform:translateY(1px)}

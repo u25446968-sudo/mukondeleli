@@ -108,3 +108,20 @@
   .qt-hero-badge{left:0}
 }
 @media(max-width:560px){.qt-contact-list div{font-size:.86rem;overflow-wrap:anywhere}}
+
+/* Company profile download card */
+.qt-profile{display:grid;grid-template-columns:auto 1fr;gap:14px 16px;align-items:center;margin-top:34px;padding:18px;border:1px solid rgba(233,173,32,.45);border-radius:14px;background:linear-gradient(135deg,rgba(233,173,32,.14),rgba(233,173,32,.03))}
+.qt-profile-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:12px;background:var(--gold);color:var(--navy)}
+.qt-profile-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.qt-profile-text small{display:block;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.qt-profile-text strong{display:block;font-size:1rem;color:#fff;margin:2px 0}
+.qt-profile-text span{font-size:.78rem;color:#8e9bb8}
+.qt-profile-actions{grid-column:1/-1;display:flex;gap:10px}
+.qt-profile-actions a{flex:1;text-align:center;padding:10px 14px;border-radius:8px;font-weight:800;font-size:.85rem;transition:background .2s,color .2s,transform .2s}
+.qt-profile-view{background:var(--gold);color:var(--navy)}
+.qt-profile-dl{border:1px solid rgba(255,255,255,.25);color:#fff}
+.qt-profile-actions a:hover{transform:translateY(-2px)}
+.qt-profile-dl:hover{border-color:var(--gold);color:var(--gold)}
+.qt-branches p{font-size:.88rem;font-weight:500;color:#dce2ef;line-height:1.45}
+.qt-branches p+p{margin-top:10px}
+.qt-branches strong{display:block;color:#fff;font-weight:700;font-size:.92rem}
