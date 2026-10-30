@@ -1,0 +1,64 @@
+/* MPS Assistant chat */
+.mps-chat{position:fixed;right:22px;bottom:22px;z-index:9990;font-family:'Inter',system-ui,sans-serif}
+body:has(.nav-links.open) .mps-chat{display:none}
+.mps-chat-launch{position:relative;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;color:#07133a;background:linear-gradient(145deg,#f4c65c,#e9ad20);box-shadow:0 14px 34px rgba(7,19,58,.35),0 0 0 4px rgba(233,173,32,.18);transition:transform .25s,box-shadow .25s}
+.mps-chat-launch:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(7,19,58,.4),0 0 0 6px rgba(233,173,32,.22)}
+.mps-chat-launch:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.mps-chat-launch svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s,opacity .2s}
+.mps-chat-launch .i-close{position:absolute;opacity:0;transform:rotate(-90deg)}
+.mps-chat.is-open .i-open{opacity:0;transform:rotate(90deg)}
+.mps-chat.is-open .i-close{opacity:1;transform:none}
+.mps-chat:not(.seen) .mps-chat-launch:after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(233,173,32,.55);animation:mpsPulse 2.4s ease-out infinite}
+@keyframes mpsPulse{0%{transform:scale(1);opacity:1}100%{transform:scale(1.45);opacity:0}}
+.mps-chat-nudge{position:absolute;right:72px;top:50%;transform:translate(8px,-50%);white-space:nowrap;background:#fff;color:#07133a;font-size:.82rem;font-weight:700;padding:9px 14px;border-radius:999px;box-shadow:0 10px 28px rgba(7,19,58,.22);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+.mps-chat.nudge:not(.is-open) .mps-chat-nudge{opacity:1;transform:translate(0,-50%)}
+
+.mps-chat-panel{position:absolute;right:0;bottom:76px;width:370px;max-height:min(600px,calc(100vh - 120px));display:flex;flex-direction:column;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(7,19,58,.35);transform-origin:bottom right;animation:mpsIn .28s cubic-bezier(.2,.8,.2,1)}
+.mps-chat-panel[hidden]{display:none}
+@keyframes mpsIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.mps-chat-head{display:flex;align-items:center;gap:12px;padding:16px 16px 16px 18px;background:linear-gradient(135deg,#07133a,#0c1d52);color:#fff;position:relative}
+.mps-chat-head:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,#e9ad20,#f7801e)}
+.mps-chat-logo{width:42px;height:42px;object-fit:contain}
+.mps-chat-head div{flex:1;min-width:0}
+.mps-chat-head strong{display:block;font-size:1rem;letter-spacing:-.01em}
+.mps-chat-head span{display:flex;align-items:center;gap:6px;font-size:.74rem;color:#b8c3d9}
+.mps-chat-head span i{width:8px;height:8px;border-radius:50%;background:#3ad07a;box-shadow:0 0 0 3px rgba(58,208,122,.2)}
+.mps-chat-x{width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:grid;place-items:center}
+.mps-chat-x:hover{background:rgba(255,255,255,.2)}
+.mps-chat-x svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+
+.mps-chat-log{flex:1;overflow-y:auto;padding:18px 16px 8px;background:#f5f7fb;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain;min-height:240px}
+.mps-msg{max-width:88%;padding:11px 14px;border-radius:16px;font-size:.88rem;line-height:1.5;color:#1d2742;word-wrap:break-word}
+.mps-msg.bot{align-self:flex-start;background:#fff;border:1px solid #e6eaf2;border-bottom-left-radius:5px;box-shadow:0 2px 6px rgba(7,19,58,.04)}
+.mps-msg.user{align-self:flex-end;background:#07133a;color:#fff;border-bottom-right-radius:5px}
+.mps-msg ul{margin:8px 0 2px 16px;padding:0}
+.mps-msg li{margin:4px 0}
+.mps-msg a:not(.mps-chat-action){color:#b37f05;font-weight:700;text-decoration:underline}
+.mps-chat-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.mps-chat-action{display:inline-block;padding:8px 13px;border-radius:999px;background:#e9ad20;color:#07133a!important;font-weight:800;font-size:.78rem;text-decoration:none!important;transition:background .2s,transform .2s}
+.mps-chat-action:hover{background:#f4c65c;transform:translateY(-1px)}
+.mps-chat-action+.mps-chat-action{background:transparent;border:1.5px solid #d9dfeb}
+.mps-chat-action+.mps-chat-action:hover{border-color:#e9ad20;background:#fffaeb}
+.mps-chat-chips{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 4px}
+.mps-chat-chips button{font:inherit;font-size:.78rem;font-weight:700;color:#07133a;background:#fff;border:1.5px solid #e9ad20;border-radius:999px;padding:7px 12px;cursor:pointer;transition:background .2s}
+.mps-chat-chips button:hover{background:#fff3d6}
+.mps-typing{display:inline-flex;gap:4px;padding:2px 0}
+.mps-typing i{width:7px;height:7px;border-radius:50%;background:#9aa6bf;animation:mpsDot 1s infinite}
+.mps-typing i:nth-child(2){animation-delay:.15s}.mps-typing i:nth-child(3){animation-delay:.3s}
+@keyframes mpsDot{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+
+.mps-chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid #eef1f6;background:#fff}
+.mps-chat-form input{flex:1;min-width:0;font:inherit;font-size:16px;padding:11px 14px;border:1.5px solid #dfe4ee;border-radius:999px;background:#f8f9fc;color:#07133a}
+.mps-chat-form input:focus{outline:none;border-color:#e9ad20;background:#fff;box-shadow:0 0 0 3px rgba(233,173,32,.18)}
+.mps-chat-form button{width:44px;height:44px;flex-shrink:0;border-radius:50%;border:0;background:#07133a;color:#e9ad20;cursor:pointer;display:grid;place-items:center}
+.mps-chat-form button svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.mps-chat-foot{margin:0;padding:0 12px 10px;background:#fff;font-size:.68rem;color:#8a94ab;text-align:center}
+.mps-chat-foot a{color:#07133a;font-weight:700}
+
+@media(max-width:560px){
+  .mps-chat{right:14px;bottom:14px}
+  .mps-chat-launch{width:54px;height:54px}
+  .mps-chat-panel{position:fixed;left:10px;right:10px;bottom:78px;width:auto;max-height:calc(100svh - 100px)}
+  .mps-chat-nudge{right:64px}
+}
+@media(prefers-reduced-motion:reduce){.mps-chat-panel,.mps-chat-launch:after,.mps-typing i{animation:none!important}}
